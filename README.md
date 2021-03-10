@@ -10,8 +10,8 @@ system design examples.
     - [Three Tier Architecture](#three-tier-architecture)
     - [N-Tier Architecture](#n-tier-architecture)
 - [System performance criteria](#)
-  - [Scalability](#)
-  - [Availability](#)
+  - [Scalability](#scalability)
+  - [Availability](#availability)
   - [Reliability](#)
   - [Efficiency](#)
   - [Flexibility](#)
@@ -129,4 +129,6 @@ scale when there are more load which can't be handled with existing applications
 **Latency** is the amount of time a system takes to respond to a user request. \
 Let’s say sending a request to an app to fetch an image & the system takes 2 seconds to respond to the request. The latency of the system is 2 seconds.
  
+
+### Availability
 
