@@ -107,9 +107,26 @@ This approach gives us a lot of flexibility & makes management easier.
 
 **Separation Of Concerns**: 
 Separation of concerns kind of means the same thing, be concerned about your work only & stop worrying about the rest of the stuff.
-These principles act at all the levels of the service, be it at the tier level or the code level.\
-Keeping the components separate makes them reusable. Different services can use the same database, 
-the messaging server or any component as long as they are not tightly coupled with each other.\
-Having loosely coupled components is the way to go. The approach makes scaling the service 
+These principles act at all the levels of the service, be it at the tier level or the code level.
+
+- Keeping the components separate makes them reusable. Different services can use the same database, 
+the messaging server or any component as long as they are not tightly coupled with each other.
+- Having loosely coupled components is the way to go. The approach makes scaling the service 
 easy in future when things grow beyond a certain level.
+
+
+##  System performance criteria
+
+### Scalability
+Scalability means the ability of the application to handle & withstand increased workload without sacrificing the latency.
+
+For instance, if an application takes *n* seconds to respond to a user request. It should take the same *n* seconds to respond to each of 
+the million concurrent user requests on that application.
+
+The infrastructure shold not crumble with increasing load or concurrent request. A scalable system each component should
+scale when there are more load which can't be handled with existing applications and should maintain the latency of the system.
+
+**Latency** is the amount of time a system takes to respond to a user request. \
+Let’s say sending a request to an app to fetch an image & the system takes 2 seconds to respond to the request. The latency of the system is 2 seconds.
+ 
 
