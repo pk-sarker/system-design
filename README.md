@@ -3,21 +3,19 @@ This is a high-level overview of some components which are important for scalabl
 system design examples.
 
 # Table of Content
+- [System Design](#system-design)
+- [Table of Content](#table-of-content)
 - [System organization](#system-organization)
   - [Tier base organization](#tier-base-organization)
     - [Single Tier Architecture](#single-tier-architecture)
     - [Two Tier Architecture](#two-tier-architecture)
     - [Three Tier Architecture](#three-tier-architecture)
     - [N-Tier Architecture](#n-tier-architecture)
-- [System performance criteria](#)
-  - [Scalability](#scalability)
-  - [Availability](#availability)
-  - [Reliability](#)
-  - [Efficiency](#)
-  - [Flexibility](#)
-  - [Robustness](#)
-  - [Maintainability](#)
-
+  - [System criteria](#system-criteria)
+    - [Reliability](#reliability)
+    - [Availability](#availability)
+    - [Scalability](#scalability)
+    - [Maintainability](#maintainability)
 # System organization
 System organization is a set of principles/rules which help to organize a set of sub-systems/modules/components that perform specific tasks/action. 
 One of the common is called **Tier** based organization. 
@@ -115,7 +113,28 @@ the messaging server or any component as long as they are not tightly coupled wi
 easy in future when things grow beyond a certain level.
 
 
-##  System performance criteria
+##  System criteria
+
+### Reliability
+Reliability represents the probability that a system/subsystem will generate correct/expected output for a given input for a definite period. 
+Reliability helps to avoid, detect and repair faults in a system. Reliable system doesn't silently alter its behaviour and start producing wrong or 
+unexpected/unacceptable output. Instead, it detects and, if possible, corrects the corruption,  for example: by retrying an operation for transient 
+(soft) or intermittent errors, or else, for uncorrectable errors, isolating the fault and reporting it to higher-level recovery mechanisms.  
+
+
+### Availability
+Availability means the degree to which a system, subsystem or component is in a specified operable and committable state at the start of time. 
+Availability is represented in percentage where 100% is the ideal case which means a system or subsystem will never go down. 
+Theoretically no system is `100%` available, systems that are `99.9xxxx%` available are considered as highly available system. 
+
+High-availability systems may report availability in terms of minutes or hours of downtime per year. Availability features allow the system 
+to stay operational even when faults do occur. A highly available system would disable the malfunctioning portion and continue operating at 
+a reduced capacity. In contrast, a less capable system might crash and become totally nonoperational. 
+
+### Maintainability
+Maintainability represents the simplicity of the source code and speed with which a system can be enhanced, extend, update and repair code. 
+If the time to repair a failed system increases, then availability will decrease. Serviceability includes various methods of easily diagnosing 
+the system when problems arise. Early detection of faults can decrease or avoid system downtime.
 
 ### Scalability
 Scalability means the ability of the application to handle & withstand increased workload without sacrificing the latency.
@@ -123,12 +142,12 @@ Scalability means the ability of the application to handle & withstand increased
 For instance, if an application takes *n* seconds to respond to a user request. It should take the same *n* seconds to respond to each of 
 the million concurrent user requests on that application.
 
-The infrastructure shold not crumble with increasing load or concurrent request. A scalable system each component should
+The infrastructure should not crumble with increasing load or concurrent request. A scalable system each component should
 scale when there are more load which can't be handled with existing applications and should maintain the latency of the system.
 
 **Latency** is the amount of time a system takes to respond to a user request. \
 Let’s say sending a request to an app to fetch an image & the system takes 2 seconds to respond to the request. The latency of the system is 2 seconds.
  
 
-### Availability
+
 
