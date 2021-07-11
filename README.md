@@ -3,8 +3,6 @@ This is a high-level overview of some components which are important for scalabl
 system design examples.
 
 # Table of Content
-- [System Design](#system-design)
-- [Table of Content](#table-of-content)
 - [System organization](#system-organization)
   - [Tier base organization](#tier-base-organization)
     - [Single Tier Architecture](#single-tier-architecture)
@@ -16,6 +14,10 @@ system design examples.
     - [Availability](#availability)
     - [Scalability](#scalability)
     - [Maintainability](#maintainability)
+  - [Selected System Designs](./solutions/README.md)
+    - [Design a chat messenger, like Facebook chat or Whatsapp](./solutions/CHAT_MESSENGER_DESIGN.md)
+    
+    
 # System organization
 System organization is a set of principles/rules which help to organize a set of sub-systems/modules/components that perform specific tasks/action. 
 One of the common is called **Tier** based organization. 
@@ -148,6 +150,11 @@ scale when there are more load which can't be handled with existing applications
 **Latency** is the amount of time a system takes to respond to a user request. \
 Let’s say sending a request to an app to fetch an image & the system takes 2 seconds to respond to the request. The latency of the system is 2 seconds.
  
+ 
+ 
+
+**Reference**\
+The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer) and some random blogs.
 
 
 
