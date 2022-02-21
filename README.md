@@ -20,7 +20,58 @@ system design examples.
   - Data Partitioning
   - Indexes
   - Proxies
-  - Replication
+  - Replication 
+  - Fault Tolerance
+  - CAP Theorem
+  - PACELC Theorem
+  - Hashing
+  - Consistent Hashing
+  - Long-Polling
+  - WebSocket
+  - Bloom filter
+  - Quorum
+  - Leader & Follower
+  - Heartbeat
+  - Checksum
+  - Write-Ahead-Log (WAL)
+  - Segmented Log
+  - Hyperloglog
+  - High-Water Mark
+  - Lease
+  - Gossip Protocol
+  - Phi Accrual Failure Detection
+  - Split Brain
+  - Fencing 
+  - Vector Clocks 
+  - Hinted Handoff 
+  - Read Repair 
+  - Merkle Trees
+  - Metadata
+  - Compaction 
+  - SSL passthrough / termination on load balancers 
+  - Two phase commit 
+  - Two phase locking 
+  - Total order broadcast 
+  - Isolation levels (read uncomitted, read comitted, repeatable read, serializable)
+  - Quadtree (GeoHashin)
+  - Inverse indexing - Google search/any search indexing 
+  - Gaming ranking - rank players based on score and faster. 
+  - Paxos algo 
+  - Raft 
+  - Backpressure 
+  - Circuit breaker
+  - Service discovery 
+  - Saga
+  - Frugal Streaming - https://github.com/resumejob/system-design-algorithms
+  - Geohash / S2 Geometry
+  - Leaky bucket / Token bucket
+  - Lossy Counting 
+  - Operational transformation
+  - Ray casting 
+  - Reverse index 
+  - Rsync algorithm 
+  - Trie algorithm 
+  - Fenwick Tree
 - [Selected System Designs](./solutions/README.md)
     - [Design a chat messenger, like Facebook chat or Whatsapp](./solutions/CHAT_MESSENGER_DESIGN.md)
 - [System organization](./SystemOrganization.md)
