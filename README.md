@@ -5,16 +5,8 @@ system design examples.
 # Table of Content 
 - Important keywords/methods/process
   - [Load Balancing](#load-balancing)
-    - Dynamic load balancing algorithms
-      - Least Connection
-      - Weighted least connection
-      - Weighted response time
-      - Resource Based (Adaptive)
-      - Resource Based (SDN Adaptive)
-    - Static load balancing algorithms
-      - Round Robin
-      - Weighted Round Robin
-      - IP hash
+    - [Dynamic load balancing algorithms](#dynamic-load-balancing-algorithms)
+    - [Static load balancing algorithms](#static-load-balancing-algorithms)
     - Load balancing based on layers
   - Caching
   - Data Partitioning
@@ -93,27 +85,39 @@ Load balancing algorithms are primarily divided in two types:
 - *Dynamic load balancing* algorithms maintains current state of the resources and distribute traffic accordingly.
 - *Static load balancing* algorithms distributes traffic based on a fixed/static schema/plan. 
 
-**Static Load Balancing algorithms**
-1) Round robin:\
+#### Static load balancing algorithms
+1) ***Round Robin***:\
 Round robin algorithm cycles through a list of servers and sends each new request to the next server. 
 When it reaches the end of the list, it starts over at the beginning. It is most useful when the servers are of equal 
 specification and there are not many persistent connections.
-2) Weighted round robin:\
-This algorithms allows weights associated with each resource. Like servers deemed able to handle more traffic will receive slightly more. 
-Weighting can be configured within DNS records.
-3) IP hash:\
+2) ***Weighted Round Robin***:\
+This algorithms allows weights associated with each resource. Like servers deemed able to handle more traffic 
+will receive slightly more. Weighting can be configured within DNS records.
+3) ***IP hash***:\
 Combines incoming traffic's source and destination IP addresses and uses a mathematical function to convert it into a hash. 
 Based on the hash, the connection is assigned to a specific server.
 
-**Dynamic Load Balancing algorithms**
-1) Least Connection:\ 
-This algorithm directs traffic to the server with the fewest active connections. This approach is quite useful when there are a large number of persistent client connections which are unevenly distributed between the servers.
+#### Dynamic load balancing algorithms
+1) ***Least Connection***:\ 
+This algorithm directs traffic to the server with the fewest active connections. This approach is quite useful 
+when there are a large number of persistent client connections which are unevenly distributed between the servers.
+2) ***Weighted Least Connection***\
+Weighted Least Connection is build on the least connection. This algorithm provides administrators the ability to 
+assign different weights to each server, assuming that some servers can handle more connections than others.
+3) ***Weighted Response Time***:\
+Weighted Response Time is a load balancing algorithm where the response times of the application 
+servers determines which application server receives the next request. The application server response time 
+to a health check is used to calculate the application server weights. The application server that is 
+responding the fastest receives the next request.
+4) ***Resource-based***:\
+Distributes load based on what resources each server has available at the time. Specialized software, called an "agent", 
+running on each server measures that server's available CPU and memory, and the load balancer queries the agent 
+before distributing traffic to that server.
 
-2) Gives administrators the ability to assign different weights to each server, assuming that some servers can handle more connections than others.
-3) 
-4) Weighted least connection:\
-5) Weighted response time:\
-6) Resource-based:\
+## Caching
+
+
+
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer) and some random blogs.
 
