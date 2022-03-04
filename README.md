@@ -125,6 +125,15 @@ Caching is most efficient for read heavy information, especially if all the foll
 - It's far away when network latency can cause access to be slow
 
 
+Based on the nature of the application/service architecture there are different ways of caching. In <u>distributed
+applications</u> there are two strategies:
+1) Private caching: In private caching data is held locally in the maching where the application is running. Mostly used in
+   in-memory to store the cache. Expecting the cache data size to be smaller, not highly increasing over time.
+2) Shared caching: In shared caching a common source that can be accessed by multiple processes and machines.
+
+
+
+
 
 
 
