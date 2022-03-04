@@ -127,9 +127,24 @@ Caching is most efficient for read heavy information, especially if all the foll
 
 Based on the nature of the application/service architecture there are different ways of caching. In <u>distributed
 applications</u> there are two strategies:
-1) Private caching: In private caching data is held locally in the maching where the application is running. Mostly used in
-   in-memory to store the cache. Expecting the cache data size to be smaller, not highly increasing over time.
-2) Shared caching: In shared caching a common source that can be accessed by multiple processes and machines.
+1) Private caching: In private caching data is held locally in the machine where the application is running. Mostly used in
+   in-memory to store the cache. Expecting the cache data size to be smaller, not highly increasing over time. 
+2) Shared caching: In shared caching a common source that can be accessed by multiple processes and machines. 
+   Multiple application can read/write to same cache, it's little slower than private caching. Considering the cache store
+   is in-memory but there will be some time for network call as the shared cache store is not local to the app machine.
+
+
+Caching is a temporary storage, it may store data for longer period of time but it is not a persistent service/storage.
+So it will be safe to store important data that you can afford to lose in persistent storage.\
+For dynamic data, data that changes frequently caching is not that useful. If actual/original data changes too frequently
+then either the cache becomes stale/old quickly or the overhead of synchronizing the cache with original data store 
+reduces the effectiveness of caching.
+
+**Do we cache all data ?**
+Mostly we don't cache all data of an entity at a time. Means, most frequently used data is cached. Data may loaded in caching
+store iteratively, just before or as needed. For example, It doesn't make sence to keep all the message, pictures, posts of a 
+social network user in cache, rather store the mostly used information, like, profile picture and other identity related information.
+
 
 
 
