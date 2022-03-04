@@ -8,7 +8,7 @@ system design examples.
     - [Dynamic load balancing algorithms](#dynamic-load-balancing-algorithms)
     - [Static load balancing algorithms](#static-load-balancing-algorithms)
     - Load balancing based on layers
-  - Caching
+  - [Caching](#caching)
   - Data Partitioning
   - Indexes
   - Proxies
@@ -115,6 +115,18 @@ running on each server measures that server's available CPU and memory, and the 
 before distributing traffic to that server.
 
 ## Caching
+Caching is a technique that stores a copy of frequently used data to fast storage that's located close to the application.
+Caching is used to improve performance and scalability of a system.
+
+Caching is most efficient for read heavy information, especially if all the following condition apply to the original data store
+- data is relatively static, means update is not that frequent
+- Reading data from original storage is slower than reading from caching store
+- It's subject to a high level of contention
+- It's far away when network latency can cause access to be slow
+
+
+
+
 
 
 
