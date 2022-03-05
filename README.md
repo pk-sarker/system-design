@@ -114,6 +114,18 @@ Distributes load based on what resources each server has available at the time. 
 running on each server measures that server's available CPU and memory, and the load balancer queries the agent 
 before distributing traffic to that server.
 
+
+Load balancer is also a place of single point of failure, So the idea is to use more than one 
+load balancers. Now consider like your load balancers are in `one physical unit`, 
+`one physical unit` means load balancers may be in one physical machine/one data center/a cluster of cloud instances/a region.
+If that one unit is down due to any reason, like power supply, natural disaster, your load balancers are gone. 
+
+In this case there is a strategy of mapping DNS name with multiple server. If someone hit the your domain
+It will try one of the assigned serves to forward the requests. These initial stage of serves are the 
+load balancers. Here is an example:
+![General_architecture](./img/SystemDesign_General_architecture_TransBG.png)
+
+
 ## Caching
 Caching is a technique that stores a copy of frequently used data to fast storage that's located close to the application.
 Caching is used to improve performance and scalability of a system.
