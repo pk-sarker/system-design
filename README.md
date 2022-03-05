@@ -166,14 +166,34 @@ Process:
 - Store a copy of the item in the cache.
 
 ### Write through cache
+In _Write through cache_, all the write/update happens in the cache first and then to the orginal data store. 
+The cache has a writer component that can write to data store/database.
+- The application receives request to write data to data store/database.
+- The application writes the data to the cache.
+- The cache invokes the writer to write to database as well as update the cache.
+
 
 ### Read through cache
+In _Read through cache_ strategy, the cache contains a component that can load or read data from 
+original data store/database.
+
+- When the application receives the read request, it asks the cache for data associated with the key.
+- If requested data found in the cache, cache hit, then the data is served from the cache.
+- If requested data is not available/old/outdated in the cache, cache miss, then the cache invokes the loader 
+   that fetches the data from the database, updates the cache, and serves the fetched data.
+- The next time there is a read request for the same data, it’s served from the cache.
+
 ### Write back cache
+This strategy is similar to [Write through cache](#write-through-cache) with the change that 
+write to original datastore is not synchronous, cache service writes the data to datastore asynchronously.
 
+- The application send write request to the caching server
+- The cache server writes data to the cache, also keep the data in a buffer/queue to write to original database,
+- The cache server send an acknowledgement back to the application after writing the data cache and buffer. At this 
+point write to original database didn't happen.
+- The cache internally maintains a buffer to save the writes.
+- The cache asynchronously writes the data from the buffer to the database at a later point in time.
 
-![Cache](./img/Cache_Store.png)
-
-![Cache](./img/Cache_Store_Transp_BG.png)
 
 
 
