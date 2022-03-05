@@ -140,11 +140,27 @@ For dynamic data, data that changes frequently caching is not that useful. If ac
 then either the cache becomes stale/old quickly or the overhead of synchronizing the cache with original data store 
 reduces the effectiveness of caching.
 
+**Cache hit:**
+A _cache hit_ means the data required to serve request is available in the cache and served from the cache.
+
+**Cache miss:** 
+A _cache miss_ means the data required to serve requests is not available in the cache and need to compute/get/retrieve
+from original datastore/service/server.
+
+![Caching Architecture](./img/Cache-architecture.png)
+
+
 **Do we cache all data ?**
 Mostly we don't cache all data of an entity at a time. Means, most frequently used data is cached. Data may loaded in caching
 store iteratively, just before or as needed. For example, It doesn't make sence to keep all the message, pictures, posts of a 
 social network user in cache, rather store the mostly used information, like, profile picture and other identity related information.
 
+#### Caching strategies
+
+### Cache Aside
+### Write through cache
+### Read through cache
+### Write back cache
 
 
 
