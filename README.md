@@ -156,14 +156,24 @@ store iteratively, just before or as needed. For example, It doesn't make sence 
 social network user in cache, rather store the mostly used information, like, profile picture and other identity related information.
 
 #### Caching strategies
-
 ### Cache Aside
+In cache aside pattern data is loaded in to cache from data store on demand. This can improve performance and also helps 
+to maintain consistency between data held in the cache and data in the underlying data store.
+
+Process:
+- On receiving request to serve any data, It first determine whether the data is currently available in the cache.
+- If the item is not currently available in cache, read the data from the original data store.
+- Store a copy of the item in the cache.
+
 ### Write through cache
+
 ### Read through cache
 ### Write back cache
 
 
+![Cache](./img/Cache_Store.png)
 
+![Cache](./img/Cache_Store_Transp_BG.png)
 
 
 
