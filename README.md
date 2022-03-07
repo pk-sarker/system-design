@@ -230,16 +230,31 @@ mechanism for dividing data by usage pattern. For example, you can archive older
 
 ### Partitioning criteria
 
+**Horizontal Partitioning**:\
+Horizontal partitioning is also known as **sharding**. In horizontal partitioning a table is divided into multiple smaller tables. 
+Each table is a separate data store, and it contains the same number of columns, but fewer rows. 
+
+Partitioning happens based on a key, usually we call it partitioning key or sharding key.
+
+The most important factor is the choice of a sharding key. It can be difficult to change the key after the system is in operation. The key must ensure that data is partitioned to spread the workload as evenly as possible across the shards.
 
 
 ### Partitioning Strategies
+
+There are three fundamental data distribution methods as basic partitioning strategies that control how data is placed into individual partitions:
+1) Range
+2) Hash
+3) List
+
+4) Round-robin
+5) Composite
 
 
 
 
 
 **Reference**\
-The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer) and some random blogs.
+The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
 
 
 
