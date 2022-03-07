@@ -238,6 +238,8 @@ Partitioning happens based on a key, usually we call it partitioning key or shar
 
 The most important factor is the choice of a sharding key. It can be difficult to change the key after the system is in operation. The key must ensure that data is partitioned to spread the workload as evenly as possible across the shards.
 
+**Vertical partitioning**:\
+In Vertical partitioning, some columns are moved to new tables. Each table contains the same number of rows but fewer columns. 
 
 ### Partitioning Strategies
 
