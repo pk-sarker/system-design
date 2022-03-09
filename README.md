@@ -247,9 +247,37 @@ There are three fundamental data distribution methods as basic partitioning stra
 1) Range
 2) Hash
 3) List
-
 4) Round-robin
 5) Composite
+
+**Range base partitioning**:\
+In Range base partitioning, partitioning key mapped with the range which is available for partitioning. 
+An example could be a partition for all rows where the "zipcode" column has a value between 70000 and 79999. 
+It distributes tuples based on the value intervals (ranges) of some attribute. In addition to supporting 
+exact-match queries (as in hashing), it is well-suited for range queries.
+```python
+key range       | partition
+0 to 1000       | 1
+1001 to 2000    | 2
+2001 to 3000    | 3
+```
+
+**Hash base partitioning**:\
+Hash partitioning maps data to partitions based on a hashing algorithm to the partitioning key that you identify. 
+The hashing algorithm evenly distributes rows among partitions, giving partitions approximately the same size.
+
+Lets have en example,
+For a given address we want to partition addresses based on the city. Here the partitioning key is city value.
+There will be a hash function which will make sure the hash function will generate same hash value for same city.
+Each hash value will have a mapping to a partition.
+
+```python
+city        | hash          | hash value    | partition
+Toronto     | hash(Toronto) | -----23exzy   | 1
+Windsor     | hash(Windsor) | -----abc123   | 2
+Toronto     | hash(Toronto) | -----23exzy   | 1
+Windsor     | hash(Windsor) | -----abc123   | 2
+```
 
 
 
