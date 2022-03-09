@@ -272,11 +272,11 @@ There will be a hash function which will make sure the hash function will genera
 Each hash value will have a mapping to a partition.
 
 ```python
-city        | hash          | hash value    | partition
-Toronto     | hash(Toronto) | -----23exzy   | 1
-Windsor     | hash(Windsor) | -----abc123   | 2
-Toronto     | hash(Toronto) | -----23exzy   | 1
-Windsor     | hash(Windsor) | -----abc123   | 2
+address                     | hash          | hash value    | partition
+222 John street, Toronto    | hash(Toronto) | -----23exzy   | 1
+192 Sunset ave, Windsor     | hash(Windsor) | -----abc123   | 2
+123 Abc Ave, Toronto        | hash(Toronto) | -----23exzy   | 1
+192 XYZ Street, Windsor     | hash(Windsor) | -----abc123   | 2
 ```
 
 
