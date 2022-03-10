@@ -243,7 +243,7 @@ In Vertical partitioning, some columns are moved to new tables. Each table conta
 
 ### Partitioning Strategies
 
-There are three fundamental data distribution methods as basic partitioning strategies that control how data is placed into individual partitions:
+There are five fundamental data distribution methods as basic partitioning strategies that control how data is placed into individual partitions:
 1) Range
 2) Hash
 3) List
@@ -296,6 +296,21 @@ Address                                 | City          |  Partition
 398-250 Rue Boivin, Alma, QC G8B1Y2     | Alma          |  Partition 2 
 ```
 
+**Round-robin partitioning**:\ 
+Round-robin partitioning ensures uniform data distribution. With _n_ partitions, the _i-th_ tuple in insertion order is assigned to partition (_i mod n_). 
+Unlike hash partitioning, it doesn't have partitioning columns.
+This strategy enables the sequential access to a relation to be done in parallel. 
+However, the direct access to individual tuples, based on a predicate, requires accessing the entire relation.
+
+Let's  have a database with 3 nodes
+
+```
+Insert request 1: Insert in to node 1
+Insert request 2: Insert in to node 2
+Insert request 3: Insert in to node 3
+Insert request 4: Insert in to node 1
+Insert request 5: Insert in to node 2
+```
 
 
 **Reference**\
