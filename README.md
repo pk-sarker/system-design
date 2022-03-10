@@ -279,7 +279,22 @@ address                     | hash          | hash value    | partition
 192 XYZ Street, Windsor     | hash(Windsor) | -----abc123   | 2
 ```
 
+**List Partitioning**:\
+In List partitioning each partition is assigned a list of values. If the partition key has one of these values, 
+the partition is chosen. Let's have an example, for the address customers, the address with that contains all the 
+cities of a province, say cities of Ontario, will be in one partition and addresses that contains any city of Quebec 
+will be in a different partition.
 
+```python
+Partition 1: [Barrie, Brampton, Hamilton, East York]
+Partition 2: [Alma, Blainville, Boucherville, Brossard]
+
+Address                                 | City          |  Partition
+150 Manning Ave, Hamilton, ON L9A3E9    | Hamilton      |  Partition 1
+99 Rue Gilles, Blainville, QC J7C3A6    | Blainville    |  Partition 2
+445 Heath St E, East York, ON M4G1B6    | East York     |  Partition 1
+398-250 Rue Boivin, Alma, QC G8B1Y2     | Alma          |  Partition 2 
+```
 
 
 
