@@ -313,6 +313,13 @@ Insert request 5: Insert in to node 2
 ```
 
 
+**Composite partitioning**:\
+Allows for certain combinations of the above partitioning schemes, by for example first applying 
+a range partitioning and then a hash partitioning. Consistent hashing could be considered a composite 
+of hash and list partitioning where the hash reduces the key space to a size that can be listed.
+
+
+
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
 
