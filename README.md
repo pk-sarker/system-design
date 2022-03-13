@@ -244,14 +244,14 @@ In Vertical partitioning, some columns are moved to new tables. Each table conta
 ### Partitioning Strategies
 
 There are five fundamental data distribution methods as basic partitioning strategies that control how data is placed into individual partitions:
-1) Range
-2) Hash
-3) List
-4) Round-robin
-5) Composite
+1) Range Partitioning
+2) Hash Partitioning
+3) List Partitioning
+4) Round-robin Partitioning
+5) Composite Partitioning
 
-**Range base partitioning**:\
-In Range base partitioning, partitioning key mapped with the range which is available for partitioning. 
+**Range partitioning**:\
+In Range partitioning, partitioning key mapped with the range which is available for partitioning. 
 An example could be a partition for all rows where the "zipcode" column has a value between 70000 and 79999. 
 It distributes tuples based on the value intervals (ranges) of some attribute. In addition to supporting 
 exact-match queries (as in hashing), it is well-suited for range queries.
@@ -262,11 +262,11 @@ key range       | partition
 2001 to 3000    | 3
 ```
 
-**Hash base partitioning**:\
+**Hash partitioning**:\
 Hash partitioning maps data to partitions based on a hashing algorithm to the partitioning key that you identify. 
 The hashing algorithm evenly distributes rows among partitions, giving partitions approximately the same size.
 
-Lets have en example,
+Let's have en example,
 For a given address we want to partition addresses based on the city. Here the partitioning key is city value.
 There will be a hash function which will make sure the hash function will generate same hash value for same city.
 Each hash value will have a mapping to a partition.
@@ -317,6 +317,42 @@ Insert request 5: Insert in to node 2
 Allows for certain combinations of the above partitioning schemes, by for example first applying 
 a range partitioning and then a hash partitioning. Consistent hashing could be considered a composite 
 of hash and list partitioning where the hash reduces the key space to a size that can be listed.
+
+There are three partitioning methods:
+1) Horizontal Partitioning
+2) Vertical Partitioning
+3) Directory Based Partitioning
+
+**Horizontal Partitioning**\
+In this method a table is divided into multiple smaller tables. Each table is a separate data store, 
+and it contains the same number of columns, but fewer rows. Horizontal partitioning is widely used 
+so let’s take a closer look.
+
+**Vertical Partitioning**\
+Vertical partitioning data is divided in multiple tables with same number of rows but fewer columns.
+Generally, this practice is known as normalization. However, vertical partitioning extends further 
+and partitions columns even when already normalized.
+
+The most common use for vertical partitioning is to reduce the I/O and performance costs associated 
+with fetching items that are frequently accessed
+
+In this example, different properties of an item are stored in different partitions. One 
+partition holds data that is accessed more frequently, including product name, description, and price. 
+Another partition holds inventory data: the stock count and last-ordered date.
+
+![Vertical Partitioning](./img/vertical-partitioning.png)
+
+Other advantages of vertical partitioning:
+- Relatively slow-moving data (product name, description, and price) can be separated from 
+the more dynamic data (stock level and last ordered date). Slow moving data is a good candidate for an application to cache in memory.
+- Sensitive data can be stored in a separate partition with additional security controls. 
+- Vertical partitioning can reduce the amount of concurrent access that's needed.
+
+
+
+
+
+
 
 
 
