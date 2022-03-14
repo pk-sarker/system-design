@@ -3,6 +3,9 @@ This is a high-level overview of some components which are important for scalabl
 system design examples.
 
 # Table of Content 
+- [Selected System Designs](./solutions/README.md)
+    - [Design a chat messenger, like Facebook chat or Whatsapp](./solutions/CHAT_MESSENGER_DESIGN.md)
+    - [Design a code deployment system](./solutions/Code_Deployment_System.md)
 - Important keywords/methods/process
   - [Load Balancing](#load-balancing)
     - [Dynamic load balancing algorithms](#dynamic-load-balancing-algorithms)
@@ -66,9 +69,8 @@ system design examples.
   - Rsync algorithm 
   - Trie algorithm 
   - Fenwick Tree
-- [Selected System Designs](./solutions/README.md)
-    - [Design a chat messenger, like Facebook chat or Whatsapp](./solutions/CHAT_MESSENGER_DESIGN.md)
 - [System organization](./SystemOrganization.md)
+
 
 
 ## Load Balancing
