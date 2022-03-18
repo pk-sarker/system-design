@@ -382,8 +382,37 @@ There is a lot of load on a partition, e.g., there are too many requests being h
 In such cases, either we have to create more DB partitions or have to rebalance existing partitions, which means the partitioning scheme changed and all existing data moved to new locations. Doing this without incurring downtime is extremely difficult. Using a scheme like directory based partitioning does make rebalancing a more palatable experience at the cost of increasing the complexity of the system and creating a new single point of failure (i.e. the lookup service/database).
 
 
-
 ### Index Table
+Indexing is a way to optimize the performance of a database by minimizing the number of disk accesses required when a query is processed. 
+It is a data structure technique which is used to quickly locate and access the data in a database. 
+
+Indexes are created using some database columns. 
+- The first column is the Search key that contains a copy of the primary key or candidate key of the table.
+- The second column is the Data Reference which contains a set of pointers holding the address of the disk block where that particular key value can be found.
+
+![indexing](./img/Indexing.png)
+
+In general, there are two types of file organization mechanism which are followed 
+by the indexing methods to store the data:  
+1. Sequential File Organization or Ordered Index File: \
+   In this, the indices are based on a sorted ordering of the values. These are generally fast and a more traditional type of storing mechanism. These Ordered or Sequential file organization might store the data in a dense or sparse format: 
+   - Dense Index: 
+     - For every search key value in the data file, there is an index record. 
+     - This record contains the search key and also a reference to the first data record with that search key value.
+   - Sparse Index:
+     - The index record appears only for a few items in the data file. Each item points to a block as shown. 
+     - To locate a record, we find the index record with the largest search key value less than or equal to the search key value we are looking for. 
+     - We start at that record pointed to by the index record, and proceed along with the pointers in the file (that is, sequentially) until we find the desired record.
+   
+2. Hash File organization: \
+   Indices are based on the values being distributed uniformly across a range of buckets. 
+   The buckets to which a value is assigned is determined by a function called a hash function.\
+   There are primarily three methods of indexing:
+   - Clustered Indexing
+   - Non-Clustered or Secondary Indexing
+   - Multilevel Indexing
+ 
+
 Create indexes over the fields in data stores that are frequently referenced by queries.
 An index table organizes the data by a specified key.  
 
