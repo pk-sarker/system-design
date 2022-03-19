@@ -52,7 +52,23 @@ The typical features of hash functions are −
 **Collision Resistance**\
 - it should be hard to find two different inputs of any length that result in the same hash. In other words, for a hash function _h_, it is hard to find any two different inputs _x_ and _y_ such that _h(x) = h(y)_.
 
-
+### Types of hashing algorithms
+There are multiple types of hashing algorithms.
+The most common hash functions uses the following algorithms
+- Message Digest 5 (MD5)
+  - MD5 was most popular and widely used hash function for quite some years.
+  - The MD family comprises of hash functions MD2, MD4, MD5 and MD6. It was adopted as Internet Standard RFC 1321. It is a 128-bit hash function.
+  - In 2004, collisions were found in MD5, An analytical attack was reported to be successful only in an hour by using computer cluster.
+- Secure Hashing Algorithm (SHA) 1, 2 and 3
+  - Family of SHA comprise of four SHA algorithms; SHA-0, SHA-1, SHA-2, and SHA-3. Though from same family, there are structurally different.
+  - The original version is SHA-0, a 160-bit hash function, was published by the National Institute of Standards and Technology (NIST) in 1993.
+  - SHA-1 is the most widely used of the existing SHA hash functions. It is employed in several widely used applications and protocols including Secure Socket Layer (SSL) security.
+  - In 2005, a method was found for uncovering collisions for SHA-1 within practical time frame making long-term employability of SHA-1 doubtful.
+  - SHA-2 family has four further SHA variants, SHA-224, SHA-256, SHA-384, and SHA-512 depending up on number of bits in their hash value. No successful attacks have yet been reported on SHA-2 hash function.
+  - Though SHA-2 is a strong hash function. Though significantly different, its basic design is still follows design of SHA-1. 
+  - In October 2012, the NIST chose the Keccak algorithm as the new SHA-3 standard.
+- [RACE Integrity Primitives Evaluation Message Digest (RIPEMD)](https://en.wikipedia.org/wiki/RIPEMD)
+- [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_(hash_function))
 
 
 ### Hashing by data types
