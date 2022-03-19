@@ -16,7 +16,7 @@ system design examples.
     - [Partitioning criteria](#partitioning-criteria)
     - [Partitioning Strategies](#partitioning-strategies)
   - [Index Table](#index-table)
-  - Proxies
+  - [Proxies](#proxies)
   - Replication 
   - Fault Tolerance
   - CAP Theorem
@@ -453,12 +453,15 @@ The key idea behind the WAL is that all modifications before they are applied to
 Each log entry should contain enough information to redo or undo the modification. The log can be read on every restart to recover 
 the previous state by replaying all the log entries.
 
+![Write Ahead Log](./img/Write-Ahead-Log.svg)
 Examples
+- The log implementation in all Consensus algorithms like Zookeeper and RAFT is similar to write ahead log
 - **Cassandra**: To ensure durability, whenever a node receives a write request, it immediately writes the data to a commit log which is a WAL. Cassandra, before writing data to a MemTable, first writes it to the commit log. This provides durability in the case of an unexpected shutdown. On startup, any mutations in the commit log will be applied to MemTables.
 - **Kafka**: implements a distributed Commit Log to persistently store all messages it receives.
 - **Chubby**: For fault tolerance and in the event of a leader crash, all database transactions are stored in a transaction log which is a WAL.
 
 
+###  
 
 
 
