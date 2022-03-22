@@ -11,3 +11,11 @@ across different servers.
 system can sustain any amount of network failure that doesn’t result in a failure of the entire network. Data is 
 sufficiently replicated across combinations of nodes and networks to keep the system up through intermittent outages.
 
+![CAP Theorem](./img/cap-theorem.png)
+
+We cannot build a general data store that is continually available, sequentially consistent, and tolerant to any 
+partition failures. We can only build a system that has any two of these three properties. Because, to be consistent, 
+all nodes should see the same set of updates in the same order. But if the network loses a partition, updates in 
+one partition might not make it to the other partitions before a client reads from the out-of-date partition after 
+having read from the up-to-date one. The only thing that can be done to cope with this possibility is to stop serving 
+requests from the out-of-date partition, but then the service is no longer 100% available.
