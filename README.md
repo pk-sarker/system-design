@@ -18,12 +18,12 @@ system design examples.
   - [Index Table](#index-table)
   - [Proxies](#proxies)
   - [API Gateway](#api-gateway)
-  - Replication
-  - Fault Tolerance
-  - CAP Theorem
-  - PACELC Theorem
   - [Hashing](./Hashing.md)
   - Consistent Hashing
+  - [CAP Theorem](./CAP-Theorem.md)
+  - PACELC Theorem
+  - Replication
+  - Fault Tolerance
   - Long-Polling
   - WebSocket
   - Bloom filter
