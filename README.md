@@ -21,7 +21,7 @@ system design examples.
   - [Hashing](./Hashing.md)
   - Consistent Hashing
   - [CAP Theorem](./CAP-Theorem.md)
-  - PACELC Theorem
+  - [PACELC Theorem](./PACELC-Theorem.md)
   - Replication
   - Fault Tolerance
   - Long-Polling
