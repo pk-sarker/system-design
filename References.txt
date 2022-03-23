@@ -1,0 +1,13 @@
+- https://medium.com/must-know-computer-science/system-design-proxies-ef5f2c2676f2
+- https://martinfowler.com/articles/patterns-of-distributed-systems/consistent-core.html
+- https://martinfowler.com/articles/patterns-of-distributed-systems/log-segmentation.html
+- https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning
+- https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning-strategies
+- https://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABDFFCD
+- https://medium.com/must-know-computer-science/system-design-sharding-data-partitioning-b7201596aafa
+- https://www.geeksforgeeks.org/indexing-in-databases-set-1/
+- https://medium.com/must-know-computer-science/system-design-indexes-f6ad3de9925d
+- https://en.wikipedia.org/wiki/Database_index
+- https://medium.com/must-know-computer-science/system-design-proxies-ef5f2c2676f2
+- https://www.educative.io/courses/grokking-the-system-design-interview
+- https://www.educative.io/courses/grokking-adv-system-design-intvw
