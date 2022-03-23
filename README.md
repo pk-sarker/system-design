@@ -19,7 +19,7 @@ system design examples.
   - [Proxies](#proxies)
   - [API Gateway](#api-gateway)
   - [Hashing](./Hashing.md)
-  - Consistent Hashing
+  - [Consistent Hashing](./ConsistentHashing.md)
   - [CAP Theorem](./CAP-Theorem.md)
   - [PACELC Theorem](./PACELC-Theorem.md)
   - Replication
@@ -32,7 +32,7 @@ system design examples.
   - Heartbeat
   - Checksum
   - [Write-Ahead-Log](#write-ahead-log)
-  - Segmented Log
+  - [Segmented Log](#segmented-log)
   - Hyperloglog
   - High-Water Mark
   - Lease
@@ -461,6 +461,16 @@ Examples
 - **Cassandra**: To ensure durability, whenever a node receives a write request, it immediately writes the data to a commit log which is a WAL. Cassandra, before writing data to a MemTable, first writes it to the commit log. This provides durability in the case of an unexpected shutdown. On startup, any mutations in the commit log will be applied to MemTables.
 - **Kafka**: implements a distributed Commit Log to persistently store all messages it receives.
 - **Chubby**: For fault tolerance and in the event of a leader crash, all database transactions are stored in a transaction log which is a WAL.
+
+### Segmented Log
+Segmented Log is a method of maintaining multiple smaller log files instead of a single large file for easier operations.
+A single log can become difficult to manage. As the file grows, it can also become a performance bottleneck, especially 
+when it is read at the startup. Older logs need to be cleaned up periodically or, in some cases, merged. Doing these 
+operations on a single large file is difficult to implement.
+
+[More on Segmented Log](./SegmentedLog.md)
+
+
 
 
 ### Proxies
