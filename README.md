@@ -146,12 +146,8 @@ The key idea behind the WAL is that all modifications before they are applied to
 Each log entry should contain enough information to redo or undo the modification. The log can be read on every restart to recover 
 the previous state by replaying all the log entries.
 
-![Write Ahead Log](./img/Write-Ahead-Log.svg)
-Examples
-- The log implementation in all Consensus algorithms like Zookeeper and RAFT is similar to write ahead log
-- **Cassandra**: To ensure durability, whenever a node receives a write request, it immediately writes the data to a commit log which is a WAL. Cassandra, before writing data to a MemTable, first writes it to the commit log. This provides durability in the case of an unexpected shutdown. On startup, any mutations in the commit log will be applied to MemTables.
-- **Kafka**: implements a distributed Commit Log to persistently store all messages it receives.
-- **Chubby**: For fault tolerance and in the event of a leader crash, all database transactions are stored in a transaction log which is a WAL.
+[More on Write-Ahead-Log](./Write-Ahead-Log.md)
+
 
 ### Segmented Log
 Segmented Log is a method of maintaining multiple smaller log files instead of a single large file for easier operations.
@@ -168,15 +164,7 @@ Clients connect to proxy servers to make a request for a service like a web page
 In short, a proxy server is a piece of software or hardware that acts as an intermediary for requests from clients seeking 
 resources from other servers.
 
-Typically, proxies are used to 
-- filter requests, 
-- log requests, 
-- or sometimes transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). 
-- Cache: A caching proxy server can also improve web performance by caching frequently used pages so the user request doesn’t have to go all the way out to the Internet at large to get some of the data it needs to display a particular page.
-- Batch requests
-- Collapsed forwarding: enable multiple client requests for the same URI to be processed as one request to the backend server
-- Collapse requests for data that is spatially close together in the storage to minimize the reads
-- Security: A proxy server can also be used to beef up security for a business. A proxy server can provide network address translation, which makes the individual users and computers on the network anonymous when they are using the Internet. This makes it much harder for hackers to access individual computers on the network.
+Typically, proxies are used to filter requests, log requests, Cache, Batch requests, Collapsed forwarding and Security.
 
 [More on Proxies](./Proxies.md)
 
@@ -190,20 +178,7 @@ to fulfill them, and return the appropriate result.
 With an API gateway, one simply exposes and scales a single collection of services (the API gateway) and updates the API gateway’s 
 configuration whenever a new upstream should be exposed externally.
 
-Exactly what the API gateway does will vary from one implementation to another. 
-Some common functions include _**authentication, routing, rate limiting, billing, monitoring, analytics, policies, alerts, and security**_.
-
-**Important use cases**:\
-- **Authentication**: An API Gateway can take the overhead of authenticating an API call from outside. which can remove the check of 
-security and lowering the network latency.
-- **Load Balancing**: The API Gateway can work as an L7 load balancer to handle requests in the most efficient manner. It can keep a track of the request load it has sent to different nodes of a particular service.
-- **Service discovery and requests dispatching**: It can make the communication between client and Microservices simpler. It hits all the required services and waits for the results from all services. 
-After obtaining the response from all the services, it combines the result and sends it back to the client. An API Gateway can record the basic response time from each node of a service instance. For higher priority API calls, it can be routed to the fastest responding node.
-- **Response transformation**: Being a first and single point of entry for all API calls, the API Gateway knows which type of client is calling: mobile, web client, or other external consumers; 
-it can make the internal call to the client and give the data to different clients as per their needs and configuration.
-- **Circuit breaker**: To handle a partial failure, the API Gateway uses a technique called circuit breaker pattern, which means that after a specific threshold, the API gateway will stop sending data to the component failing. This gives time to analyze the logs, implement a fix, and push an update. Or if necessary close the circuit until the issue is solved.
-
-
+[More on API Gateway](./APIGateway.md)
 
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
