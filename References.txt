@@ -11,3 +11,7 @@
 - https://medium.com/must-know-computer-science/system-design-proxies-ef5f2c2676f2
 - https://www.educative.io/courses/grokking-the-system-design-interview
 - https://www.educative.io/courses/grokking-adv-system-design-intvw
+- [Understanding Replication in Databases and Distributed Systems by M. Wiesmann, B. Kemme](https://www.cs.mcgill.ca/~kemme/papers/icdcs00.pdf)
+- https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8103&rep=rep1&type=pdf
+- https://www.striim.com/blog/the-7-data-replication-strategies-you-need-to-know/
+- https://www.allbluesolutions.com/blog/top-5-tips-for-a-best-data-replication-strategy/
