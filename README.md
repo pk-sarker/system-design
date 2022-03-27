@@ -180,6 +180,15 @@ configuration whenever a new upstream should be exposed externally.
 
 [More on API Gateway](./APIGateway.md)
 
+
+# Replication
+Replication involves sharing information so as to ensure consistency between redundant resources, to improve reliability, fault-tolerance, or accessibility.
+
+Replication in computing can refer to:
+- **Data Replication**,  multiple copies of same data is stored and maintained
+- **Computation Replication**, the same computing task is executed many times
+
+[More on Replication](./Replication.md)
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
 
