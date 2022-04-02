@@ -20,4 +20,5 @@
 - https://en.wikipedia.org/wiki/Count-distinct_problem
 - https://llimllib.github.io/bloomfilter-tutorial/
 - https://en.wikipedia.org/wiki/Bloom_filter
+- https://en.wikipedia.org/wiki/Quorum_(distributed_computing)
 
