@@ -28,6 +28,7 @@ system design examples.
   - WebSocket
   - [Bloom filter](#bloom-filter)
   - [Quorum](#quorum)
+  - [Sloppy Quorum](#sloppy-quorum)
   - Leader & Follower
   - Heartbeat
   - Checksum
@@ -157,6 +158,15 @@ In case of network partitioning, sites are partitioned and the partitions may no
 This is where a quorum-based technique comes in. The fundamental idea is that a transaction is executed if the majority of sites vote to execute it.
 
 [More on Quorum](./Quorum.md)
+
+# Sloppy Quorum 
+Sloppy quorums are particularly useful for increasing write availability: as long as any w nodes are available, the database can accept writes. However, this means that even when _w + r > n_, 
+you cannot be sure to read the latest value for a key, because the latest value may have been temporarily written to some nodes outside of _n_.
+
+Dynamo replicates writes to a sloppy quorum of other nodes in the system, instead of a strict majority quorum like Paxos. 
+All read/write operations are performed on the first _N_ healthy nodes from the preference list, which may not always be the first _N_ nodes encountered while walking the consistent hashing ring.
+
+
 
 
 ### Write-Ahead-Log

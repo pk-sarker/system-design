@@ -40,5 +40,8 @@ in Cassandra, to ensure data consistency, each write request can be configured t
 successful only if the data has been written to at least a quorum (or majority) of replica nodes.
 
 
-
+# Sloppy Quorum 
+Dynamo replicates writes to a sloppy quorum of other nodes in the system, instead of a strict majority quorum like Paxos. 
+All read/write operations are performed on the first N healthy nodes from the preference list, which may not always be the first N nodes encountered while walking the consistent hashing ring.
+Sloppy quorums are particularly useful for increasing write availability.
 
