@@ -29,7 +29,7 @@ system design examples.
   - [Bloom filter](#bloom-filter)
   - [Quorum](#quorum)
   - [Sloppy Quorum](#sloppy-quorum)
-  - Leader & Follower
+  - [Leader and Follower](#leader-and-follower)
   - Heartbeat
   - Checksum
   - [Write-Ahead-Log](#write-ahead-log)
@@ -167,6 +167,33 @@ Dynamo replicates writes to a sloppy quorum of other nodes in the system, instea
 All read/write operations are performed on the first _N_ healthy nodes from the preference list, which may not always be the first _N_ nodes encountered while walking the consistent hashing ring.
 
 
+# Leader and Follower
+Distributed systems keep multiple copies of data for fault tolerance and higher availability. A system can use quorum to ensure data consistency between replicas, 
+i.e., all reads and writes are not considered successful until a majority of nodes participate in the operation.
+
+However, using quorum can lead to another problem, that is, lower availability; at any time, the system needs 
+to ensure that at least a majority of replicas are up and available, otherwise the operation will fail. 
+Quorum is also not sufficient, as in certain failure scenarios, the client can still see inconsistent data.
+Allow only a single server (called leader) to be responsible for data replication and to coordinate work.
+
+At any time, one server is elected as the **_leader_**. This **_leader_** becomes responsible for data replication 
+and can act as the central point for all coordination. The followers only accept writes from the leader and serve as a backup. 
+In case the leader fails, one of the followers can become the leader. In some cases, the follower can serve read requests for load balancing.
+
+
+![Leader](./img/leader.png)
+
+Examples
+- In **_Kafka_**, each partition has a designated leader which is responsible for all reads and writes for that partition. 
+Each follower’s responsibility is to replicate the leader’s data to serve as a “backup” partition. This provides 
+redundancy of messages in a partition, so that a follower can take over the leadership if the leader goes down.
+- Within the Kafka cluster, one broker is elected as the Controller. This Controller is responsible for 
+admin operations, such as creating/deleting a topic, adding partitions, assigning leaders to partitions, 
+monitoring broker failures, etc. Furthermore, the Controller periodically checks the health of other brokers in the system.
+- To ensure strong consistency, Paxos (hence Chubby) performs leader election at startup. This leader is 
+responsible for data replication and coordination. 
+
+For leader election, **_Chubby_** uses _Paxos_, which use quorum to ensure strong consistency.
 
 
 ### Write-Ahead-Log
