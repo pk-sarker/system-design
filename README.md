@@ -31,7 +31,7 @@ system design examples.
   - [Sloppy Quorum](#sloppy-quorum)
   - [Leader and Follower](#leader-and-follower)
   - [Heartbeat](#heartbeat)
-  - Checksum
+  - [Checksum](#checksum)
   - [Write-Ahead-Log](#write-ahead-log)
   - [Segmented Log](#segmented-log)
   - [HyperLogLog](#hyperloglog)
@@ -210,6 +210,16 @@ If there is no heartbeat within a configured timeout period, the system can conc
 Examples#
 - GFS: The leader periodically communicates with each ChunkServer in HeartBeat messages to give instructions and collect state.
 - HDFS: The NameNode keeps track of DataNodes through a heartbeat mechanism. Each DataNode sends periodic heartbeat messages (every few seconds) to the NameNode. If a DataNode dies, then the heartbeats to the NameNode are stopped. The NameNode detects that a DataNode has died if the number of missed heartbeat messages reaches a certain threshold. The NameNode then marks the DataNode as dead and will no longer forward any I/O requests to that DataNode.
+
+
+### Checksum
+In a distributed system, while moving data between components, it is possible that the data fetched from a node may arrive corrupted. This corruption can occur because of faults in a storage device, network, software, etc. How can a distributed system ensure data integrity, so that the client receives an error instead of corrupt data?
+
+Calculate a checksum and store it with data.
+
+To calculate a checksum, a cryptographic hash function like MD5, SHA-1, SHA-256, or SHA-512 is used. The hash function takes the input data and produces a string (containing letters and numbers) of fixed length; this string is called the checksum.
+
+When a system is storing some data, it computes a checksum of the data and stores the checksum with the data. When a client retrieves data, it verifies that the data it received from the server matches the checksum stored. If not, then the client can opt to retrieve that data from another replica.
 
 
 ### Write-Ahead-Log
