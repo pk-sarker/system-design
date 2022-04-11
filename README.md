@@ -48,6 +48,7 @@ system design examples.
   - Metadata
   - Compaction 
   - SSL passthrough / termination on load balancers 
+  - [Distributed Lock Manager](#distributed-lock-manager)
   - Two phase commit 
   - Two phase locking 
   - Total order broadcast 
@@ -56,6 +57,7 @@ system design examples.
   - Inverse indexing - Google search/any search indexing 
   - Gaming ranking - rank players based on score and faster. 
   - Consistent Core
+  - 
   - Paxos algo 
   - Raft 
   - Backpressure 
@@ -347,6 +349,33 @@ Replication in computing can refer to:
 
 [More on Replication](./Replication.md)
 
+# Distributed Lock Manager
+Operating systems use lock managers to organise and serialise the access to resources. 
+A distributed lock manager (DLM) runs in every machine in a cluster, with an identical 
+copy of a cluster-wide lock database. In this way a DLM provides software applications 
+which are distributed across a cluster on multiple machines with a means to synchronize 
+their accesses to shared resources.
+
+The DLM uses a generalized concept of a resource, which is some entity to which shared access must be controlled.
+his can relate to a file, a record, an area of shared memory, or anything else that the application designer chooses.
+
+There are six lock modes that can be granted, and these determine the level of exclusivity 
+ being granted, it is possible to convert the lock to a higher or lower level of lock mode. 
+- _Null (NL)_. Indicates interest in the resource, but does not prevent other processes from locking it. It has the advantage that the resource and its lock value block are preserved, even when no processes are locking it.
+- _Concurrent Read (CR)_. Indicates a desire to read (but not update) the resource. It allows other processes to read or update the resource, but prevents others from having exclusive access to it. This is usually employed on high-level resources, in order that more restrictive locks can be obtained on subordinate resources.
+- _Concurrent Write (CW)_. Indicates a desire to read and update the resource. It also allows other processes to read or update the resource, but prevents others from having exclusive access to it. This is also usually employed on high-level resources, in order that more restrictive locks can be obtained on subordinate resources.
+- _Protected Read (PR)_. This is the traditional share lock, which indicates a desire to read the resource but prevents other from updating it. Others can however also read the resource.
+- _Protected Write (PW)_. This is the traditional update lock, which indicates a desire to read and update the resource and prevents others from updating it. Others with Concurrent Read access can however read the resource.
+- _Exclusive (EX)_. This is the traditional exclusive lock which allows read and update access to the resource, and prevents others from having any access to it.
+
+Other DLM implementations include the following:
+- Google has developed [Chubby](https://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf), a lock service for loosely coupled distributed systems. 
+  It is designed for coarse-grained locking and also provides a limited but reliable distributed file system. Key parts of Google's infrastructure, including Google File System, Bigtable, and MapReduce, use Chubby to synchronize accesses to shared resources. 
+  Though Chubby was designed as a lock service, it is now heavily used inside Google as a name server, supplanting DNS.
+- [Apache ZooKeeper](https://zookeeper.apache.org/), which was created at Yahoo, is open-source software and can be used to perform distributed locks as well.
+- [Etcd](https://etcd.io/) is open-source software, developed at CoreOS under the Apache License. It can be used to perform distributed locks as well.
+- [Redis](https://redis.io/) is an open source, BSD licensed, advanced key-value cache and store. Redis can be used to implement the Redlock Algorithm for distributed lock management.
+- HashiCorp's [Consul](https://www.consul.io/), which was created by HashiCorp, is open-source software and can be used to perform distributed locks as well. Taooka distributed lock manager uses the "try lock" methods to avoid deadlocks. It can also specify a TTL for each lock with nanosecond precision.
 
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
