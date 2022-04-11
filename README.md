@@ -37,7 +37,7 @@ system design examples.
   - [HyperLogLog](#hyperloglog)
   - [High-Water Mark](#high-water-mark)
   - [Lease](#lease)
-  - Gossip Protocol
+  - [Gossip Protocol](#Gossip Protocol)
   - Phi Accrual Failure Detection
   - Split Brain
   - Fencing 
@@ -314,6 +314,11 @@ If the client wants to extend the lease, it can renew the lease before it expire
 Example:\
 [Chubby](https://research.google/pubs/pub27897/) clients maintain a time-bound session lease with the leader. During this time interval, 
 the leader guarantees to not terminate the session unilaterally.
+
+### Gossip Protocol
+
+[More on Gossip Protocol](./GossipProtocol.md)
+
 
 ### Proxies
 
