@@ -57,7 +57,6 @@ system design examples.
   - Inverse indexing - Google search/any search indexing 
   - Gaming ranking - rank players based on score and faster. 
   - Consistent Core
-  - 
   - Paxos algo 
   - Raft 
   - Backpressure 
