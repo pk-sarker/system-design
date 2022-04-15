@@ -37,7 +37,7 @@ system design examples.
   - [HyperLogLog](#hyperloglog)
   - [High-Water Mark](#high-water-mark)
   - [Lease](#lease)
-  - [Gossip Protocol](#Gossip Protocol)
+  - [Gossip Protocol](#gossip-protocol)
   - Phi Accrual Failure Detection
   - Split Brain
   - Fencing 
@@ -316,6 +316,11 @@ Example:\
 the leader guarantees to not terminate the session unilaterally.
 
 ### Gossip Protocol
+Gossip protocol is a communication protocol that allows state sharing in distributed systems. 
+Most modern systems use this peer-to-peer protocol to disseminate information to all the members in a network or cluster.
+
+This protocol is used in a decentralized system that does not have any central node to keep track of all nodes and 
+know if a node is down or not.
 
 [More on Gossip Protocol](./GossipProtocol.md)
 
