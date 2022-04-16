@@ -38,7 +38,7 @@ system design examples.
   - [High-Water Mark](#high-water-mark)
   - [Lease](#lease)
   - [Gossip Protocol](#gossip-protocol)
-  - Phi Accrual Failure Detection
+  - [Phi Accrual Failure Detection](#phi-accrual-failure-detection)
   - Split Brain
   - Fencing 
   - Vector Clocks 
@@ -327,6 +327,23 @@ like which nodes are reachable, what key ranges they are responsible for, etc.
 
 [More on Gossip Protocol](./GossipProtocol.md)
 
+### Phi Accrual Failure Detection
+In distributed systems, accurately detecting failures is a hard problem to solve, as we cannot say surely if a system is genuinely down 
+or is just very slow in responding due to heavy load, network congestion, etc
+If we keep the timeout short, the system will detect failures quickly but with many false positives due to slow machines or faulty network. 
+On the other hand, if we keep the timeout long, the false positives will be reduced, but the system will not perform efficiently for 
+being slow in detecting failure.
+
+Instead of telling if the server is alive or not, a generic Accrual Failure Detector outputs the suspicion level about a server. 
+A higher suspicion level means there are higher chances that the server is down.
+
+With Phi Accrual Failure Detector, if a node does not respond, its suspicion level is increased and could be declared dead later. 
+As a node’s suspicion level increases, the system can gradually stop sending new requests to it. Phi Accrual Failure Detector 
+makes a distributed system efficient as it takes into account fluctuations in the network environment and other intermittent server 
+issues before declaring a system completely dead.
+
+
+Cassandra uses the Phi Accrual Failure Detector algorithm to determine the state of the nodes in the cluster.
 
 ### Proxies
 
