@@ -322,6 +322,9 @@ Most modern systems use this peer-to-peer protocol to disseminate information to
 This protocol is used in a decentralized system that does not have any central node to keep track of all nodes and 
 know if a node is down or not.
 
+Dynamo & Cassandra use gossip protocol which allows each node to keep track of state information about the other nodes in the cluster, 
+like which nodes are reachable, what key ranges they are responsible for, etc.
+
 [More on Gossip Protocol](./GossipProtocol.md)
 
 

@@ -37,3 +37,7 @@ some distributed systems use the concept of seed nodes. Seed nodes are fully fun
 either from a static configuration or a configuration service. This way, all nodes are aware of seed nodes. Each
 node communicates with seed nodes through gossip protocol to reconcile membership changes. Therefore, logical 
 partitions are highly unlikely.
+
+
+Dynamo & Cassandra use gossip protocol which allows each node to keep track of state information about the other nodes in the cluster, 
+like which nodes are reachable, what key ranges they are responsible for, etc.
