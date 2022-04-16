@@ -5,7 +5,7 @@ Most modern systems use this peer-to-peer protocol to disseminate information to
 This protocol is used in a decentralized system that does not have any central node to keep track of all nodes and 
 know if a node is down or not.
 
-$[Gossip Protocol](./img/Gossip_protocols;.svg)
+![Gossip Protocol](./img/Gossip_protocols.svg)
 
 **Gathering State information**:\
 So, how does a node know every other node’s current state in a decentralized distributed system?
