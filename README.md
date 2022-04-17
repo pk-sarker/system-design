@@ -40,7 +40,7 @@ system design examples.
   - [Gossip Protocol](#gossip-protocol)
   - [Phi Accrual Failure Detection](#phi-accrual-failure-detection)
   - [Split Brain](#split-brain)
-  - Fencing 
+  - [Fencing](#fencing) 
   - Vector Clocks 
   - Hinted Handoff 
   - Read Repair 
@@ -369,6 +369,26 @@ persisted on disk, so that it remains available after a server reboot. One way i
 **_Kafka_**: To handle Split-brain (where we could have multiple active controller brokers), Kafka uses ‘Epoch number,’ which is simply a monotonically increasing number to indicate a server’s generation.
 **_HDFS_**: ZooKeeper is used to ensure that only one NameNode is active at any time. An epoch number is maintained as part of every transaction ID to reflect the NameNode generation.
 **_Cassandra_**: uses generation number to distinguish a node’s state before and after a restart. Each node stores a generation number which is incremented every time a node restarts. This generation number is included in gossip messages exchanged between nodes and is used to distinguish the current state of a node from the state before a restart. The generation number remains the same while the node is alive and is incremented each time the node restarts. The node receiving the gossip message can compare the generation number it knows and the generation number in the gossip message. If the generation number in the gossip message is higher, it knows that the node was restarted.
+
+### Fencing
+In a leader-follower setup, when a leader fails, it is impossible to be sure that the leader has stopped working. 
+For example, a slow network or a network partition can trigger a new leader election, even though the previous leader 
+is still running and thinks it is still the active leader. Now, in this situation, if the system elects a new leader, 
+how do we make sure that the old leader is not running and possibly issuing conflicting commands?
+
+Put a `Fence` around the previous leader to prevent it from doing any damage or causing corruption.
+
+Fencing is the idea of putting a fence around a previously active leader so that it cannot access cluster resources 
+and hence stop serving any read/write request. The following two techniques are used:
+- **Resource fencing**: Under this scheme, the system blocks the previously active leader from accessing resources 
+needed to perform essential tasks. For example, revoking its access to the shared storage directory (typically 
+by using a vendor-specific Network File System (NFS) command), or disabling its network port via a remote management command.
+- **Node fencing**: Under this scheme, the system stops the previously active leader from accessing all resources. 
+A common way of doing this is to power off or reset the node. This is a very effective method of keeping it from accessing 
+anything at all. This technique is also called STONIT or “Shoot The Other Node In The Head.”
+
+Examples#
+**HDFS** uses fencing to stop the previously active NameNode from accessing cluster resources, thereby stopping it from servicing requests.
 
 ### Proxies
 
