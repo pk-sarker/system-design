@@ -40,8 +40,9 @@ system design examples.
   - [Gossip Protocol](#gossip-protocol)
   - [Phi Accrual Failure Detection](#phi-accrual-failure-detection)
   - [Split Brain](#split-brain)
-  - [Fencing](#fencing) 
-  - Vector Clocks 
+  - [Fencing](#fencing)
+  - Lamport timestamps
+  - [Vector Clock](#vector-clock)
   - Hinted Handoff 
   - Read Repair 
   - Merkle Trees
@@ -389,6 +390,15 @@ anything at all. This technique is also called STONIT or “Shoot The Other Node
 
 Examples#
 **HDFS** uses fencing to stop the previously active NameNode from accessing cluster resources, thereby stopping it from servicing requests.
+
+### Vector Clock
+A vector clock is a data structure used for determining the partial ordering of events in a distributed system and detecting causality violations. 
+Similar to [Lamport timestamps](#lamport-timestamp), inter-process messages contain the state of the sending process's logical clock. 
+A vector clock of a system of **_N_** processes is an array/vector of **_N_** logical clocks, one clock per process; 
+a local "largest possible values" copy of the global clock-array is kept in each process.
+
+**Logical Clock**: A logical clock is a mechanism for capturing chronological and causal relationships in a distributed system.
+
 
 ### Proxies
 
