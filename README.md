@@ -41,7 +41,7 @@ system design examples.
   - [Phi Accrual Failure Detection](#phi-accrual-failure-detection)
   - [Split Brain](#split-brain)
   - [Fencing](#fencing)
-  - Lamport timestamps
+  - [Lamport timestamp](#lamport-timestamp)
   - [Vector Clock](#vector-clock)
   - Hinted Handoff 
   - Read Repair 
@@ -460,6 +460,15 @@ Other DLM implementations include the following:
 - [Etcd](https://etcd.io/) is open-source software, developed at CoreOS under the Apache License. It can be used to perform distributed locks as well.
 - [Redis](https://redis.io/) is an open source, BSD licensed, advanced key-value cache and store. Redis can be used to implement the Redlock Algorithm for distributed lock management.
 - HashiCorp's [Consul](https://www.consul.io/), which was created by HashiCorp, is open-source software and can be used to perform distributed locks as well. Taooka distributed lock manager uses the "try lock" methods to avoid deadlocks. It can also specify a TTL for each lock with nanosecond precision.
+
+
+# Lamport Timestamp
+In distributed system synchronizing clocks between systems or finding order of the events is a very hard problem.  
+The Lamport timestamp algorithm is a simple logical clock algorithm used to determine the order of events in a distributed computer system.
+
+
+[More on Lamport Timestamp](./LamportTimestamp.md)
+
 
 **Reference**\
 The content is mostly by the @author and mixture of contents from [Wikipedia](https://en.wikipedia.org/), [Medium](https://medium.com/), [System Design Primer](https://github.com/donnemartin/system-design-primer), [Microsoft technical documentation](https://docs.microsoft.com/en-ca/) and some random blogs.
