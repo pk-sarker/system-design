@@ -43,7 +43,7 @@ system design examples.
   - [Fencing](#fencing)
   - [Lamport timestamp](#lamport-timestamp)
   - [Vector Clock](#vector-clock)
-  - Hinted Handoff 
+  - Hinted Handoff
   - Read Repair 
   - Merkle Trees
   - Metadata
@@ -398,6 +398,23 @@ A vector clock of a system of **_N_** processes is an array/vector of **_N_** lo
 a local "largest possible values" copy of the global clock-array is kept in each process.
 
 **Logical Clock**: A logical clock is a mechanism for capturing chronological and causal relationships in a distributed system.
+
+### Hinted Handoff
+Hinted Handoff is an optional part of writes whose primary purpose is to provide extreme write availability when consistency is not required.
+Hinted Handoff is a process that improves write throughput in distributed systems when some systems are down. When a node is down or 
+does not respond to a write request, the coordinator node writes a hint in a text file on the local disk. This hint contains the 
+data itself along with information about which node the data belongs to When the coordinator node discovers from the Gossiper 
+(will be discussed later) that a node for which it holds hints has recovered, it forwards the write requests for each hint to the target.
+Furthermore, each node every ten minutes checks to see if the failing node, for which it is holding any hints, has recovered.
+
+Depending upon the consistency level, some distributed systems like Cassandra still serve write requests even when nodes are down. 
+For example, if we have the replication factor of three and the client is writing with a quorum consistency level. 
+This means that if one of the nodes is down, Cassandra can still write on the remaining two nodes to fulfill the consistency level, 
+hence, making the write successful.
+
+![Hinted Handoff](./img/hinted-handoff.png)
+
+[More on Hinted Handoff](./HintedHandoff.md)
 
 
 ### Proxies
