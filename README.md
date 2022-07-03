@@ -43,7 +43,7 @@ system design examples.
   - [Fencing](#fencing)
   - [Lamport timestamp](#lamport-timestamp)
   - [Vector Clock](#vector-clock)
-  - Hinted Handoff
+  - [Hinted Handoff]((#HintedHandoff))
   - Read Repair 
   - Merkle Trees
   - Metadata
