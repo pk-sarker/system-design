@@ -23,7 +23,7 @@ system design examples.
   - [CAP Theorem](./CAP-Theorem.md)
   - [PACELC Theorem](./PACELC-Theorem.md)
   - [Replication](./Replication.md)
-  - Fault Tolerance
+  - [Fault Tolerance](./FaultTolerance.md)
   - Long-Polling
   - WebSocket
   - [Bloom filter](#bloom-filter)
@@ -410,7 +410,7 @@ Furthermore, each node every ten minutes checks to see if the failing node, for 
 Depending upon the consistency level, some distributed systems like Cassandra still serve write requests even when nodes are down. 
 For example, if we have the replication factor of three and the client is writing with a quorum consistency level. 
 This means that if one of the nodes is down, Cassandra can still write on the remaining two nodes to fulfill the consistency level, 
-hence, making the write successful.
+hence, making the write successful.Hinted Handoff 
 
 ![Hinted Handoff](./img/hinted-handoff.png)
 
@@ -449,6 +449,17 @@ Replication in computing can refer to:
 - **Computation Replication**, the same computing task is executed many times
 
 [More on Replication](./Replication.md)
+
+# Fault Tolerance
+Fault Tolerance is criteria of a system that defines the ability of the system to work or function as expected when there is any failure. 
+Failure can be system component, service, network connectivity, unavailability of resource. 
+
+Fault tolerant system ensure high-availability of the system by preventing disruptions arising from a single point of failure.
+
+Diversity, Redundancy, Replication are the components of a Fault-tolerance System.
+
+[More on Fault Tolerance](./FaultTolerance.md)
+
 
 # Distributed Lock Manager
 Operating systems use lock managers to organise and serialise the access to resources. 
