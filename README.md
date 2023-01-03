@@ -24,7 +24,7 @@ system design examples.
   - [PACELC Theorem](./PACELC-Theorem.md)
   - [Replication](./Replication.md)
   - [Fault Tolerance](./FaultTolerance.md)
-  - Long-Polling
+  - [Long-Polling](#long-polling)
   - WebSocket
   - [Bloom filter](#bloom-filter)
   - [Quorum](#quorum)
@@ -459,6 +459,22 @@ Fault tolerant system ensure high-availability of the system by preventing disru
 Diversity, Redundancy, Replication are the components of a Fault-tolerance System.
 
 [More on Fault Tolerance](./FaultTolerance.md)
+
+# Long-Polling
+Long Polling is the mechanism where the client requests the server for a resource and waits for the server. 
+The service may not have the resource that has been requested, as soon as the resource is available server send the response back.
+
+In long polling connection between client and server persist for longer period of time. The server 
+does not close the connection once it receives a request from the client. Instead, the server responds only 
+if any new message is available or if a timeout threshold is reached. Once the client receives a response, 
+it immediately sends a new request to the server to have a new pending connection to send data to the client, 
+and the operation is repeated. With this approach, the server emulates a Realtime Server Push feature.
+
+Ideal candidate of long polling will be a situation where client makes frequent request to the server for 
+data/new data and data may not available at the moment but it may be available in near future time. So 
+consider a case where client is asking for new data every 5 second and data is not available, so everytime 
+server has to send empty response back. For a longer period of time there will lot of processing at server side
+when no data is available. 
 
 
 # Distributed Lock Manager
