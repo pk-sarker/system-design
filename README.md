@@ -476,6 +476,8 @@ consider a case where client is asking for new data every 5 second and data is n
 server has to send empty response back. For a longer period of time there will lot of processing at server side
 when no data is available. 
 
+[More on Long-Polling](./LongPolling.md)
+
 
 # Distributed Lock Manager
 Operating systems use lock managers to organise and serialise the access to resources. 
